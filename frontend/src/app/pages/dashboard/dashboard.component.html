@@ -1,36 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4">
+  <a class="navbar-brand fw-bold" routerLink="/home">SoloBanking</a>
+
+  <div class="ms-auto">
+    <button class="btn btn-light btn-sm" (click)="logout()">
+      <i class="bi bi-box-arrow-left"></i>
+    </button>
+  </div>
+</nav>
+
 <div class="dashboard-container">
-  <h2>Il tuo conto</h2>
-
-  <div *ngIf="errore" class="errore">{{ errore }}</div>
-
-  <div *ngIf="saldo !== null" class="saldo">
-    <h3>Saldo disponibile</h3>
-    <p>{{ saldo | currency:'EUR' }}</p>
+  
+  <div class="card text-center">
+    
+    <div class="card-header">
+      <div *ngIf="errore" class="errore">{{ errore }}</div>
+      <div *ngIf="iban !== null" class="iban">
+        <p>IL TUO CONTO CON IBAN: {{ iban}}</p>
+      </div>
+    </div>
+  
+    <div class="card-body">
+      <h5 class="card-title">
+        <div *ngIf="errore" class="errore">{{ errore }}</div>
+        <div *ngIf="saldo !== null" class="saldo">
+          <p>Saldo disponibile</p>
+          <p>{{ saldo | currency:'EUR' }}</p>
+        </div>
+      </h5>
+    </div>
   </div>
 
-  <div *ngIf="movimenti.length > 0; else noMov">
-    <h3>Ultimi movimenti</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Data</th>
-          <th>Descrizione</th>
-          <th>Importo (€)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let m of movimenti">
-          <td>{{ m.data | date:'dd/MM/yyyy HH:mm' }}</td>
-          <td>{{ m.descrizione }}</td>
-          <td [class.negativo]="m.importo < 0">{{ m.importo | number:'1.2-2' }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="card text-center" style="margin-top: 30px;">
+    
+    <div class="card-header">
+      <p>Lista Movimenti:</p>
+    </div>
+  
+    <div class="card-body">
+
+      <div *ngIf="movimenti.length > 0; else noMov">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Causale</th>
+            <th scope="col">Importo (€)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let m of movimenti">
+            <td>{{ m.data | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ m.descrizione }}</td>
+            <td [class.negativo]="m.importo < 0">{{ m.importo | number:'1.2-2' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <ng-template #noMov>
+        <p>Nessun movimento disponibile</p>
+      </ng-template>
+    </div>
   </div>
-
-  <ng-template #noMov>
-    <p>Nessun movimento disponibile</p>
-  </ng-template>
-
-  <button (click)="logout()" class="logout">Logout</button>
 </div>
