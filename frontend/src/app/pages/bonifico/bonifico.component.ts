@@ -73,4 +73,9 @@ export class BonificoComponent {
   tornaHome() {
     this.router.navigate(['/home']);
   }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.navigate(['/login']);
+  }
 }

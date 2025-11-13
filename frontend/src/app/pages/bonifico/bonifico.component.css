@@ -1,7 +1,75 @@
-.container {
-  max-width: 600px;
+.dashboard-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #7d00ae;
+  border-radius: 8px;
+}
+
+.saldo {
+  margin-bottom: 30px;
+  background-color: #121212;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.movimenti table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #7d00ae;
+}
+
+.movimenti th, .movimenti td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  background-color: #7d00ae;
+}
+
+.negativo {
+  color: red;
+}
+
+.logout {
+  margin-top: 25px;
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background-color: #b700ff;
+}
+
+.errore {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #fff !important;
+  text-decoration: underline;
+}
+
+.card {
+  border-width: 3px;
+  color: #ffffff;
+  background-color: #121212;
+  border-color: #ffffff;
 }
 
 button {
-  font-weight: 500;
+  width: 25%;
+  padding: 10px;
+  background-color: #7d00ae;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
+
