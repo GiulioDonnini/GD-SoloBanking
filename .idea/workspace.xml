@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca9ec755-4fac-4b15-b053-d077dee6d273" name="Changes" comment="ADD Nuove Entita Utente, Conto, Transazione">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/solobanking.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="ca9ec755-4fac-4b15-b053-d077dee6d273" name="Changes" comment="ADD AuthController, ContoController, TransazioneController">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/it/solobanking/backend/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/it/solobanking/backend/security/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +17,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -50,19 +46,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Maven.backend [org.springframework.boot:spring-boot-maven-plugin:3.5.7:run].executor": "Run",
-    "Maven.backend [org.springframework.boot:spring-boot-maven-plugin:3.5.7:start].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Maven.backend [org.springframework.boot:spring-boot-maven-plugin:3.5.7:run].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backend [org.springframework.boot:spring-boot-maven-plugin:3.5.7:start].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -94,12 +90,66 @@
       <option name="project" value="LOCAL" />
       <updated>1763034737549</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ADD UtenteRepository, ContoRepository, TransazioneRepository">
+      <option name="closed" value="true" />
+      <created>1763035634727</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763035634727</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ADD UtenteService, TransazioneService, ContoService con ligica base di bonifico">
+      <option name="closed" value="true" />
+      <created>1763036491833</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763036491833</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ADD Dipendenze per JWT">
+      <option name="closed" value="true" />
+      <created>1763043136534</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1763043136534</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ADD GlobalExceptionHandler">
+      <option name="closed" value="true" />
+      <created>1763048234499</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1763048234499</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ADD SecurityConfig, JwtAuthenticationFilter, JwtService">
+      <option name="closed" value="true" />
+      <created>1763048336205</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1763048336205</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ADD AuthController, ContoController, TransazioneController">
+      <option name="closed" value="true" />
+      <created>1763048366464</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1763048366464</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Commit Iniziale" />
     <MESSAGE value="ADD Nuove Entita Utente, Conto, Transazione" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD Nuove Entita Utente, Conto, Transazione" />
+    <MESSAGE value="ADD UtenteRepository, ContoRepository, TransazioneRepository" />
+    <MESSAGE value="ADD UtenteService, TransazioneService, ContoService con ligica base di bonifico" />
+    <MESSAGE value="ADD Dipendenze per JWT" />
+    <MESSAGE value="ADD GlobalExceptionHandler" />
+    <MESSAGE value="ADD SecurityConfig, JwtAuthenticationFilter, JwtService" />
+    <MESSAGE value="ADD AuthController, ContoController, TransazioneController" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD AuthController, ContoController, TransazioneController" />
   </component>
 </project>
