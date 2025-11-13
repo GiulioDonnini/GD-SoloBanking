@@ -1,11 +1,15 @@
 package it.solobanking.backend.service;
 
 import it.solobanking.backend.model.Conto;
-import it.solobanking.backend.model.Transazione;
+import it.solobanking.backend.model.Utente;
 import it.solobanking.backend.repository.ContoRepository;
-import it.solobanking.backend.repository.TransazioneRepository;
+import it.solobanking.backend.repository.UtenteRepository;
+import it.solobanking.backend.security.JwtService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -14,31 +18,47 @@ import java.util.Optional;
 public class ContoService {
 
     private final ContoRepository contoRepository;
-    private final TransazioneRepository transazioneRepository;
+    private final UtenteRepository utenteRepository;
+    private final TransazioneService transazioneService;
+    private final JwtService jwtService;
 
-    public ContoService(ContoRepository contoRepository, TransazioneRepository transazioneRepository) {
+    public ContoService(ContoRepository contoRepository,
+                        UtenteRepository utenteRepository,
+                        TransazioneService transazioneService,
+                        JwtService jwtService) {
         this.contoRepository = contoRepository;
-        this.transazioneRepository = transazioneRepository;
+        this.utenteRepository = utenteRepository;
+        this.transazioneService = transazioneService;
+        this.jwtService = jwtService;
     }
 
     public Double getSaldo(String iban) {
-        Optional<Conto> contoOpt = contoRepository.findByIban(iban);
-        if (contoOpt.isEmpty()) {
-            throw new RuntimeException("Conto non trovato");
-        }
-        return contoOpt.get().getSaldo();
+        Conto conto = contoRepository.findByIban(iban)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Conto non trovato"));
+        return conto.getSaldo();
+    }
+
+    public Conto getContoUtente(HttpServletRequest request) {
+        String email = jwtService.estraiEmailRichiesta(request);
+        if (email == null)
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token non valido o mancante");
+
+        Utente utente = utenteRepository.findByEmail(email)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Utente non trovato"));
+
+        return contoRepository.findByUtenteId(utente.getId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Conto non trovato"));
     }
 
     @Transactional
-    public void eseguiBonifico(String ibanMittente, String ibanDestinatario, Double importo, String causale) {
+    public void eseguiBonifico(String ibanMittente, String ibanDestinatario, Double importo, String descrizione) {
         Conto mittente = contoRepository.findByIban(ibanMittente)
-                .orElseThrow(() -> new RuntimeException("Conto mittente non trovato"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Conto mittente non trovato"));
         Conto destinatario = contoRepository.findByIban(ibanDestinatario)
-                .orElseThrow(() -> new RuntimeException("Conto destinatario non trovato"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Conto destinatario non trovato"));
 
-        if (mittente.getSaldo() < importo) {
-            throw new RuntimeException("Saldo insufficiente");
-        }
+        if (mittente.getSaldo() < importo)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Saldo insufficiente");
 
         mittente.setSaldo(mittente.getSaldo() - importo);
         destinatario.setSaldo(destinatario.getSaldo() + importo);
@@ -46,9 +66,7 @@ public class ContoService {
         contoRepository.save(mittente);
         contoRepository.save(destinatario);
 
-        Transazione t1 = new Transazione(mittente, -importo, causale, LocalDateTime.now());
-        Transazione t2 = new Transazione(destinatario, importo, causale, LocalDateTime.now());
-        transazioneRepository.save(t1);
-        transazioneRepository.save(t2);
+        transazioneService.creaTransazione(mittente, -importo, descrizione, LocalDateTime.now());
+        transazioneService.creaTransazione(destinatario, importo, descrizione, LocalDateTime.now());
     }
 }

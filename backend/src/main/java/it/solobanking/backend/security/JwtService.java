@@ -2,6 +2,7 @@ package it.solobanking.backend.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -30,6 +31,18 @@ public class JwtService {
 
     public String estraiEmail(String token) {
         return getClaims(token).getSubject();
+    }
+
+    public String estraiEmailRichiesta(HttpServletRequest request) {
+        final String authHeader = request.getHeader("Authorization");
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return null;
+        }
+        String token = authHeader.substring(7);
+        if (!tokenValido(token)) {
+            return null;
+        }
+        return estraiEmail(token);
     }
 
     public boolean tokenValido(String token) {

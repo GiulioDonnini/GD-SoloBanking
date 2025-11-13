@@ -1,6 +1,8 @@
 package it.solobanking.backend.controller;
 
+import it.solobanking.backend.model.Conto;
 import it.solobanking.backend.service.ContoService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,16 @@ public class ContoController {
 
     public ContoController(ContoService contoService) {
         this.contoService = contoService;
+    }
+
+    @GetMapping("/personale")
+    public ResponseEntity<?> getContoUtente(HttpServletRequest request) {
+        try {
+            Conto conto = contoService.getContoUtente(request);
+            return ResponseEntity.ok(conto);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping("/saldo/{iban}")

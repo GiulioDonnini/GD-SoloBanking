@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface ContoRepository extends JpaRepository<Conto, Long> {
     Optional<Conto> findByIban(String iban);
-    List<Conto> findByUtenteId(Long utenteId);
+    Optional<Conto> findByUtenteId(Long utenteId);
 }
