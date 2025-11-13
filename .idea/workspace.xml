@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca9ec755-4fac-4b15-b053-d077dee6d273" name="Changes" comment="ADD AuthController, ContoController, TransazioneController">
+    <list default="true" id="ca9ec755-4fac-4b15-b053-d077dee6d273" name="Changes" comment="Aggiunto componente Login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/it/solobanking/backend/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/it/solobanking/backend/security/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,8 +136,35 @@
       <option name="project" value="LOCAL" />
       <updated>1763048366464</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Aggiunta dipendenza per Sprigdoc-openapi, Swagger, modifica al SecurityConfig">
+      <option name="closed" value="true" />
+      <created>1763052238579</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1763052238579</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Aggiunto componente Login">
+      <option name="closed" value="true" />
+      <created>1763052771233</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1763052771233</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Commit Iniziale" />
@@ -150,6 +175,8 @@
     <MESSAGE value="ADD GlobalExceptionHandler" />
     <MESSAGE value="ADD SecurityConfig, JwtAuthenticationFilter, JwtService" />
     <MESSAGE value="ADD AuthController, ContoController, TransazioneController" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD AuthController, ContoController, TransazioneController" />
+    <MESSAGE value="Aggiunta dipendenza per Sprigdoc-openapi, Swagger, modifica al SecurityConfig" />
+    <MESSAGE value="Aggiunto componente Login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto componente Login" />
   </component>
 </project>
