@@ -2,13 +2,13 @@
   max-width: 800px;
   margin: 50px auto;
   padding: 20px;
-  background: #fff;
+  background: #7d00ae;
   border-radius: 8px;
 }
 
 .saldo {
   margin-bottom: 30px;
-  background-color: #f0f7ff;
+  background-color: #121212;
   padding: 15px;
   border-radius: 6px;
 }
@@ -16,12 +16,14 @@
 .movimenti table {
   width: 100%;
   border-collapse: collapse;
+  background-color: #7d00ae;
 }
 
 .movimenti th, .movimenti td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  background-color: #7d00ae;
 }
 
 .negativo {
@@ -56,5 +58,18 @@
 
 .card {
   border-width: 3px;
+  color: #ffffff;
+  background-color: #121212;
+  border-color: #ffffff;
+}
+
+button {
+  width: 25%;
+  padding: 10px;
+  background-color: #7d00ae;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 

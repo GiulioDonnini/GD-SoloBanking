@@ -1,1 +1,37 @@
-<p>bonifico works!</p>
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">Esegui Bonifico</h2>
+    <button (click)="tornaHome()" class="btn btn-outline-secondary btn-sm">
+      <i class="bi bi-house"></i> Home
+    </button>
+  </div>
+
+  <form (ngSubmit)="inviaBonifico()" #formBonifico="ngForm" class="card p-4 shadow-sm">
+    <div class="mb-3">
+      <label class="form-label">IBAN Mittente</label>
+      <input type="text" class="form-control" [(ngModel)]="ibanMittente" name="ibanMittente" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">IBAN Destinatario</label>
+      <input type="text" class="form-control" [(ngModel)]="ibanDestinatario" name="ibanDestinatario" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Importo (€)</label>
+      <input type="number" class="form-control" [(ngModel)]="importo" name="importo" required min="0.01" step="0.01">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Descrizione</label>
+      <textarea class="form-control" [(ngModel)]="descrizione" name="descrizione" rows="2"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="!formBonifico.valid" class="btn btn-primary w-100">
+      Invia Bonifico
+    </button>
+  </form>
+
+  <div *ngIf="messaggio" class="alert alert-success mt-3 text-center">{{ messaggio }}</div>
+  <div *ngIf="errore" class="alert alert-danger mt-3 text-center">{{ errore }}</div>
+</div>

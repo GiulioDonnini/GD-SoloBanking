@@ -49,6 +49,10 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  vaiABonifico() {
+    this.router.navigate(['/bonifico']);
+  }
+
   logout() {
     localStorage.removeItem('jwt');
     this.router.navigate(['/login']);
