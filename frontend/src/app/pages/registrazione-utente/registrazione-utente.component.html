@@ -1,1 +1,46 @@
-<p>registrazione-utente works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark px-4" style="background-color: blueviolet;">
+  <a class="navbar-brand fw-bold" routerLink="/home">SoloBanking</a>
+</nav>
+
+<div class="container d-flex align-items-center justify-content-center vh-100">
+  <div class="card shadow-sm p-4" style="max-width: 450px; width: 100%;">
+    <h3 class="text-center mb-4">Crea un nuovo account</h3>
+
+    <form (ngSubmit)="registra()" #formReg="ngForm">
+      <div class="row mb-3">
+        <div class="col">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-control" [(ngModel)]="nome" name="nome" required>
+        </div>
+        <div class="col">
+          <label class="form-label">Cognome</label>
+          <input type="text" class="form-control" [(ngModel)]="cognome" name="cognome" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="email" name="email" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" [(ngModel)]="password" name="password" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Conferma Password</label>
+        <input type="password" class="form-control" [(ngModel)]="confermaPassword" name="confermaPassword" required>
+      </div>
+
+      <button class="btn w-100" type="submit" [disabled]="!formReg.valid">Registrati</button>
+    </form>
+
+    <div *ngIf="messaggio" class="alert alert-success mt-3 text-center">{{ messaggio }}</div>
+    <div *ngIf="errore" class="alert alert-danger mt-3 text-center">{{ errore }}</div>
+
+    <div class="text-center mt-3">
+      <a routerLink="/login" class="text-decoration-none">Hai già un account? Accedi</a>
+    </div>
+  </div>
+</div>
